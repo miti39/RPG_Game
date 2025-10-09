@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public abstract class Postac {
+
+    private int hp = 100;
+    private int obrona = 3;
+    private int obrarzenia = 25;
+    private String name;
+
+    public Postac(){
+        System.out.print("Jak się nazywasz? -");
+        Scanner sc = new Scanner(System.in);
+        this.name = sc.nextLine();
+    }
+
+    //Gettery
+    public String getName(){
+        return this.name;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public int getObrazenia() {
+        return obrona;
+    }
+
+    //Settery
+    public void setHp(int hp) {
+        if (hp < 0) {
+            this.hp = 0;
+        } else {
+            this.hp = hp;
+        }
+    }
+
+    //Methody
+    public void podstawowyAtak(Postac odbiorca, Postac atakujacy){
+        System.out.println(name + " atakuje za " + obrarzenia);
+
+        odbiorca.setHp(odbiorca.getHp() - atakujacy.getObrazenia());
+
+        System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca);
+    }
+    
+    
+}
