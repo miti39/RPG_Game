@@ -44,8 +44,7 @@ public abstract class Postac {
 
         odbiorca.setHp(odbiorca.getHp() + odbiorca.getObrona() - atakujacy.getObrazenia());
 
-        System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca);
+        System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
     }
 
 }
-
