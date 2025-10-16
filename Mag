@@ -1,0 +1,35 @@
+public class Mag extends Postac{
+    private int mana = 100;
+
+
+    //Gettery
+    public int getMana(){
+        return mana;
+    }
+
+    //Settey
+    public void setMana(int mana){
+        if(0 > mana){
+            this.mana = 0;
+        }else{
+            this.mana = mana;
+        }
+    }
+
+    //Methody
+    public void superAtak(Postac odbiorca, Mag atakujacy){
+        if(atakujacy.getMana() < 20){
+            System.out.println("Nie możesz zatakować nie masz już many");
+        }else{
+            atakujacy.setMana(atakujacy.getMana() - 20);
+
+            System.out.println(atakujacy.getName() + " atakuje za 80hp");
+
+            odbiorca.setHp(odbiorca.getHp() - 80);
+
+            System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
+
+        }
+    }
+
+}
