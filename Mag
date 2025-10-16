@@ -28,7 +28,7 @@ public class Mag extends Postac{
             odbiorca.setHp(odbiorca.getHp() - 80);
 
             System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
-
+            System.out.println("/n");
         }
     }
 
