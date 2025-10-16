@@ -46,7 +46,7 @@ public class Wojownik extends Postac{
             odbiorca.setHp(odbiorca.getHp() + odbiorca.getObrona() - 60);
 
             System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
-
+            System.out.println("/n");
         }
     }
 
@@ -60,6 +60,7 @@ public class Wojownik extends Postac{
         odbiorca.setHp(hp);
 
         System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
+        System.out.println("/n");
 
         wkurzenie += 2;
     }
