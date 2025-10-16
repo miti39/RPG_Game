@@ -2,7 +2,9 @@ public class Wojownik extends Postac{
     private int hp = 120;
     private int obrona = 5;
     private int wkurzenie = 0;
-    
+
+
+    //Gettery
     @Override
     public int getHp() {
         return this.hp;
@@ -11,17 +13,37 @@ public class Wojownik extends Postac{
     public int getObrona() {
         return this.obrona;
     }
-    
+    public int getWkurzenie(){
+        return wkurzenie;
+    }
 
-    public void superAtak(Postac odbiorca, Postac atakujacy){
-        if(wkurzenie > 2){
-            System.out.println("NIe morzesz zatakować twoje Wkurzenie jest zamałe");
+    //Settery
+    @Override
+    public void setHp(int hp) {
+        if (hp < 0) {
+            this.hp = 0;
+        } else {
+            this.hp = hp;
+        }
+    }
+    public void setWkurzenie(int wkurzenie) {
+        if(wkurzenie < 0){
+            this.wkurzenie = 0;
         }else{
-            wkurzenie -= 2;
+            this.wkurzenie = wkurzenie;
+        }
+    }
 
-            System.out.println(atakujacy.getName() + " atakuje za 50hp");
+    //Methody
+    public void superAtak(Postac odbiorca, Wojownik atakujacy){
+        if(wkurzenie > 2){
+            System.out.println("Nie możesz zatakować, jesteś za mało Wkurzony");
+        }else{
+            setWkurzenie(atakujacy.getWkurzenie() - 2);
 
-            odbiorca.setHp(odbiorca.getHp() + odbiorca.getObrona() - 50);
+            System.out.println(atakujacy.getName() + " atakuje za 60hp");
+
+            odbiorca.setHp(odbiorca.getHp() + odbiorca.getObrona() - 60);
 
             System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
 
@@ -30,9 +52,12 @@ public class Wojownik extends Postac{
 
     @Override
     public void podstawowyAtak(Postac odbiorca, Postac atakujacy){
+        int hp;
+
         System.out.println(atakujacy.getName() + " atakuje za " + atakujacy.getObrazenia());
 
-        odbiorca.setHp(odbiorca.getHp() + odbiorca.getObrona() - atakujacy.getObrazenia());
+        hp = odbiorca.getHp() + odbiorca.getObrona() - atakujacy.getObrazenia();
+        odbiorca.setHp(hp);
 
         System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
 
