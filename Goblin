@@ -1,0 +1,30 @@
+public class Goblin extends Postac{
+    private int hp = 45;
+    private int obrona = 2;
+    private int obrazenia = 15;
+
+
+    //Gettery
+    @Override
+    public int getHp() {
+        return this.hp;
+    }
+    @Override
+    public int getObrona() {
+        return this.obrona;
+    }
+    @Override
+    public int getObrazenia() {
+        return obrazenia;
+    }
+
+    //Settery
+    @Override
+    public void setHp(int hp) {
+        if (hp < 0) {
+            this.hp = 0;
+        } else {
+            this.hp = hp;
+        }
+    }
+}
