@@ -40,11 +40,15 @@ public abstract class Postac {
 
     //Methody
     public void podstawowyAtak(Postac odbiorca, Postac atakujacy){
-        System.out.println(name + " atakuje za " + obrazenia);
+        int hp;
 
-        odbiorca.setHp(odbiorca.getHp() + odbiorca.getObrona() - atakujacy.getObrazenia());
+        System.out.println(atakujacy.getName() + " atakuje za " + atakujacy.getObrazenia());
+
+        hp = odbiorca.getHp() + odbiorca.getObrona() - atakujacy.getObrazenia();
+        odbiorca.setHp(hp);
 
         System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
+        System.out.println("/n");
     }
 
 }
