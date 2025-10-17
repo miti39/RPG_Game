@@ -1,0 +1,18 @@
+import java.util.Scanner;
+public class StworzPostac  extends Postac{
+     public  void podajKlase(){
+        System.out.println("Kim chcesz być? \n 1:Wojownik\n 2:Mag");
+        Scanner sc = new Scanner(System.in);
+        String klasa = sc.nextLine();
+        if(klasa == "1"){
+            Wojownik bohater = new Wojownik();
+        }
+        else if(klasa == "2"){
+            Mag bohater = new Mag();
+        } else {
+            System.out.println("Podaj poprawna klase");
+            podajKlase();
+        }
+
+    }
+}
