@@ -1,4 +1,4 @@
-public class Mag extends Postac{
+public class Mag extends Postac implements Mikstura{
     private int mana = 100;
 
 
@@ -17,7 +17,8 @@ public class Mag extends Postac{
     }
 
     //Methody
-    public void superAtak(Postac odbiorca, Mag atakujacy){
+    @Override
+    public void superAtakM(Postac odbiorca, Mag atakujacy){
         if(atakujacy.getMana() < 20){
             System.out.println("Nie możesz zatakować nie masz już many");
         }else{
@@ -28,8 +29,17 @@ public class Mag extends Postac{
             odbiorca.setHp(odbiorca.getHp() - 80);
 
             System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
-            System.out.println("/n");
+            System.out.println("\n");
         }
     }
 
+    @Override
+    public void plusHp(int mikstura, Postac osoba) {
+        osoba.setHp(osoba.getHp() + mikstura);
+    }
+
+    @Override
+    public void plusMany(int mikstura, Mag osoba) {
+        osoba.setMana(osoba.getMana() + mikstura);
+    }
 }
