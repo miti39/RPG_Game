@@ -3,7 +3,7 @@ import java.util.Scanner;
 public abstract class Postac {
 
     private int hp = 100;
-    private int obrona = 3;
+    private int obrona = 5;
     private int obrazenia = 25;
     private String name;
 
@@ -48,7 +48,9 @@ public abstract class Postac {
         odbiorca.setHp(hp);
 
         System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
-        System.out.println("/n");
+        System.out.println("\n");
     }
 
+    public void superAtakM(Postac odbiorca, Mag atakujacy){}
+    public void superAtakW(Postac odbiorca, Wojownik atakujacy){}
 }
