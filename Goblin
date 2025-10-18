@@ -1,7 +1,13 @@
 public class Goblin extends Postac{
-    private int hp = 45;
-    private int obrona = 2;
-    private int obrazenia = 15;
+    private int hp;
+    private int obrona;
+    private int obrazenia;
+
+    public Goblin() {
+        this.hp = 45;
+        this.obrazenia = 15;
+        this.obrona = 2;
+    }
 
 
     //Gettery
