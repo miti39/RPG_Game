@@ -1,0 +1,11 @@
+public interface Mikstura {
+
+    int miksturaHP = 30;
+    int miksturaMany = 25;
+
+
+    void plusHp(int mikstura, Postac osoba);
+
+    void plusMany(int mikstura , Mag osoba);
+
+}
