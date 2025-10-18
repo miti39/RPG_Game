@@ -1,14 +1,20 @@
 public class Czlowiek extends Postac{
-    private int obrazenia = 30;
-    private int licznik = 0;
+    private int obrazenia;
+    private int licznik;
 
-    //Gettery
+    public Czlowiek(){
+        this.obrazenia = 30;
+        this.licznik = 0;
+    }
+
+
+
     @Override
     public int getObrazenia() {
         return obrazenia;
     }
-    
-    //Settery
+
+
     public void setLicznik(int licznik) {
         this.licznik = licznik;
     }
@@ -24,17 +30,17 @@ public class Czlowiek extends Postac{
         odbiorca.setHp(hp);
 
         System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
-        System.out.println("/n");
+        System.out.println("\n");
     }
 
     public void superAtak(Postac odbiorca, Czlowiek atakujacy){
         atakujacy.setLicznik(0);
-        System.out.println(atakujacy.getName() + " atakuje za 50hp");
+        System.out.println(atakujacy.getName() + " atakuje za 80hp");
 
         odbiorca.setHp(odbiorca.getHp() - 80);
 
         System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
-        System.out.println("/n");
+        System.out.println("\n");
 
     }
 }
