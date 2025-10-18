@@ -3,21 +3,41 @@ import java.util.Random;
 import java.lang.Thread;
 
 public class Rozgrywka {
+
     int i;
+    String wybur;
     Random generator = new Random();
-    
-    public String chodzenie(){
+
+    public  void stworzPostac(){
+        System.out.println("Kim chcesz być? \n 1:Wojownik\n 2:Mag");
+        Scanner sc = new Scanner(System.in);
+
+        wybur = sc.nextLine();
+
+        if(wybur == "1"){
+            Wojownik bohater = new Wojownik();
+        }
+        else if(wybur == "2"){
+            Mag bohater = new Mag();
+        } else {
+            System.out.println("Podaj poprawna klase");
+            stworzPostac();
+        }
+
+    }
+
+
+    public String chodzenie(Postac postac){
         try{
             for(i=0;i<100;i++){
                 System.out.println("Przeszedłeś " + i + 1 + " M");
-                Thread.sleep(1000);
-    
-                Random generator = new Random();
+                Thread.sleep(500);
+
                 int x = generator.nextInt(5);
-    
+
                 if(x == 5){
                     System.out.println("Jest Przeciwnik! \n \n \n");
-                    walka();
+                    walka(postac);
                 }
                 System.out.println("\n\n\n\n\n");
             }
@@ -29,7 +49,47 @@ public class Rozgrywka {
     }
 
 
-    public void walka(){
+    public void walka(Postac postac){
 
+        //Walka jako Wojownik by urzyć jego super ataku
+        if(wybur == "1"){
+
+            int x = generator.nextInt(6);
+            if(x <= 6){
+                //Walczysz z człowiekiem
+                Czlowiek przeciwnik = new Czlowiek();
+                while (przeciwnik.getHp() < 0 || postac.getHp() < 0){
+
+                }
+            }
+            else{
+                //Walczysz z goblinem
+                Goblin przeciwnik = new Goblin();
+                while (przeciwnik.getHp() < 0 || postac.getHp() < 0){
+
+                }
+            }
+
+        }
+        //Walka jako Mag by urzyć jego super ataku
+        else if(wybur == "2"){
+
+            int x = generator.nextInt(6);
+            if(x <= 6){
+                //Walczysz z człowiekiem
+                Czlowiek przeciwnik = new Czlowiek();
+                while (przeciwnik.getHp() < 0 || postac.getHp() < 0){
+
+                }
+            }
+            else{
+                //Walczysz z goblinem
+                Goblin przeciwnik = new Goblin();
+                while (przeciwnik.getHp() < 0 || postac.getHp() < 0){
+
+                }
+            }
+
+        }
     }
 }
