@@ -1,17 +1,18 @@
 import java.util.Scanner;
 
-public abstract class Postac {
+public abstract class Postac implements Mikstura{
 
     private int hp = 100;
     private int obrona = 5;
     private int obrazenia = 25;
+    private int licznik = 0;
     private String name;
 
-    public Postac(){
-        System.out.print("Jak się nazywasz? -");
-        Scanner sc = new Scanner(System.in);
-        this.name = sc.nextLine();
-    }
+//    public Postac(){
+//        System.out.print("Jak się nazywasz? - ");
+//        Scanner sc = new Scanner(System.in);
+//        this.name = sc.nextLine();
+//    }
 
     //Gettery
     public String getName(){
@@ -38,6 +39,12 @@ public abstract class Postac {
         }
     }
 
+    public void setName(){
+        System.out.print("Jak się nazywasz? - ");
+        Scanner sc = new Scanner(System.in);
+        this.name = sc.nextLine();
+    }
+
     //Methody
     public void podstawowyAtak(Postac odbiorca, Postac atakujacy){
         int hp;
@@ -49,6 +56,15 @@ public abstract class Postac {
 
         System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
         System.out.println("\n");
+    }
+
+    @Override
+    public void plusHp(int mikstura, Postac osoba) {
+        if(licznik <= 3){
+            licznik++;
+            osoba.setHp(osoba.getHp() + mikstura);
+        }
+
     }
 
     public void superAtakM(Postac odbiorca, Mag atakujacy){}
