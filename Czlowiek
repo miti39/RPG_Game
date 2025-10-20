@@ -1,9 +1,12 @@
 public class Czlowiek extends Postac{
     private int obrazenia;
     private int licznik;
+    private String name;
+
 
     public Czlowiek(){
-        this.obrazenia = 30;
+        this.name = "Złodziej";
+        this.obrazenia = 25;
         this.licznik = 0;
     }
 
@@ -13,7 +16,14 @@ public class Czlowiek extends Postac{
     public int getObrazenia() {
         return obrazenia;
     }
+    @Override
+    public String getName() {
+        return name;
+    }
 
+    public int getLicznik() {
+        return licznik;
+    }
 
     public void setLicznik(int licznik) {
         this.licznik = licznik;
@@ -35,9 +45,9 @@ public class Czlowiek extends Postac{
 
     public void superAtak(Postac odbiorca, Czlowiek atakujacy){
         atakujacy.setLicznik(0);
-        System.out.println(atakujacy.getName() + " atakuje za 80hp");
+        System.out.println(atakujacy.getName() + " atakuje za 50hp");
 
-        odbiorca.setHp(odbiorca.getHp() - 80);
+        odbiorca.setHp(odbiorca.getHp() - 50);
 
         System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
         System.out.println("\n");
