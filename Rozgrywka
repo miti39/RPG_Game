@@ -4,36 +4,45 @@ import java.lang.Thread;
 
 public class Rozgrywka {
 
-    int i;
-    String wybur;
+    int i = 0;
+    int wybur;
     Random generator = new Random();
+    Scanner sc = new Scanner(System.in);
 
-    public  void stworzPostac(){
+    public void start(){
         System.out.println("Kim chcesz być? \n 1:Wojownik\n 2:Mag");
-        Scanner sc = new Scanner(System.in);
 
-        wybur = sc.nextLine();
 
-        if(wybur == "1"){
+        this.wybur = sc.nextInt();
+
+        if(wybur == 1){
             Wojownik bohater = new Wojownik();
+            bohater.setName();
+            chodzenie(bohater);
         }
-        else if(wybur == "2"){
+        else if(wybur == 2){
             Mag bohater = new Mag();
-        } else {
-            System.out.println("Podaj poprawna klase");
-            stworzPostac();
+            bohater.setName();
+            chodzenie(bohater);
         }
+        else {
+            System.out.println("Podaj nie poprawna klase");
+            start();
+        }
+
 
     }
 
 
-    public String chodzenie(Postac postac){
+    public void chodzenie(Postac postac){
         try{
-            for(i=0;i<100;i++){
-                System.out.println("Przeszedłeś " + i + 1 + " M");
+            while(this.i < 100){
+                System.out.println("Przeszedłeś " + (i + 1) + " M");
+
+                this.i++;
                 Thread.sleep(500);
 
-                int x = generator.nextInt(5);
+                int x = generator.nextInt(11);
 
                 if(x == 5){
                     System.out.println("Jest Przeciwnik! \n \n \n");
@@ -45,51 +54,218 @@ public class Rozgrywka {
         catch (Exception e) {
             System.out.println(e);
         }
-        return "gratulacje wygrałes!";
+        System.out.println("gratulacje wygrałes!");
     }
 
 
     public void walka(Postac postac){
 
         //Walka jako Wojownik by urzyć jego super ataku
-        if(wybur == "1"){
+        if(this.wybur == 1){
 
-            int x = generator.nextInt(6);
-            if(x <= 6){
+            int x = generator.nextInt(7);
+            if(x > 4){
                 //Walczysz z człowiekiem
                 Czlowiek przeciwnik = new Czlowiek();
-                while (przeciwnik.getHp() < 0 || postac.getHp() < 0){
+                System.out.println("Walczysz z Złodziejem");
 
+                //Rozpoczęcie walki
+                while (przeciwnik.getHp() > 0 && postac.getHp() > 0){
+
+                    System.out.println("co robisz? \n 1:Atakujesz\n 2:Urzywasz mikstury");
+                    int odp =  sc.nextInt();
+                    System.out.println("\n");
+
+                    if(odp == 1){
+                        System.out.println("jak atakujesz? \n 1:Podstawowy atak\n 2:Super atak");
+                        int typAtaku = sc.nextInt();
+
+                        //twój atak
+                        if(typAtaku == 1){
+                            postac.podstawowyAtak(przeciwnik, postac);
+                        }
+                        else if(typAtaku == 2){
+                            postac.superAtakW(przeciwnik, (Wojownik) postac);
+                        }
+                        else{
+                            System.out.println("niepoprawna odpowiedz");
+                        }
+
+                        //Atak przeciwnika
+
+                        if(przeciwnik.getLicznik() == 3){
+                            przeciwnik.superAtak(postac, przeciwnik);
+                        }
+                        else{
+                            przeciwnik.podstawowyAtak(postac, przeciwnik);
+                        }
+
+                    }
+                    else if(odp == 2){
+                        System.out.println("Uleczyłeś się o 30hp");
+                        postac.plusHp(Mikstura.miksturaHP, postac);
+                    }
+                    else{
+                        System.out.println("niepoprawna odpowiedz");
+                    }
+
+                    System.out.println("\n");
                 }
+
             }
             else{
                 //Walczysz z goblinem
                 Goblin przeciwnik = new Goblin();
-                while (przeciwnik.getHp() < 0 || postac.getHp() < 0){
+                System.out.println("Walczysz z Goblinem");
 
+                //Rozpoczęcie walki
+                while (przeciwnik.getHp() > 0 && postac.getHp() > 0){
+
+                    System.out.println("co robisz? \n 1:Atakujesz\n 2:Urzywasz mikstury");
+                    int odp =  sc.nextInt();
+                    System.out.println("\n");
+
+                    if(odp == 1){
+                        System.out.println("jak atakujesz? \n 1:Podstawowy atak\n 2:Super atak");
+                        int typAtaku = sc.nextInt();
+
+                        //twój atak
+                        if(typAtaku == 1){
+                            postac.podstawowyAtak(przeciwnik, postac);
+                        }
+                        else if(typAtaku == 2){
+                            postac.superAtakW(przeciwnik, (Wojownik) postac);
+                        }
+                        else{
+                            System.out.println("niepoprawna odpowiedz");
+                        }
+
+                        //Atak przeciwnika
+                            przeciwnik.podstawowyAtak(postac, przeciwnik);
+
+                    }
+                    else if(odp == 2){
+                        System.out.println("Uleczyłeś się o 30hp");
+                        postac.plusHp(Mikstura.miksturaHP, postac);
+                    }
+                    else{
+                        System.out.println("niepoprawna odpowiedz");
+                    }
                 }
+
+                System.out.println("\n");
             }
 
         }
+
+
         //Walka jako Mag by urzyć jego super ataku
-        else if(wybur == "2"){
+        else if(this.wybur == 2){
 
-            int x = generator.nextInt(6);
-            if(x <= 6){
+            int x = generator.nextInt(7);
+            if(x > 4){
                 //Walczysz z człowiekiem
                 Czlowiek przeciwnik = new Czlowiek();
-                while (przeciwnik.getHp() < 0 || postac.getHp() < 0){
+                System.out.println("Walczysz z Złodziejem");
 
+                //Rozpoczęcie walki
+                while (przeciwnik.getHp() > 0 && postac.getHp() > 0){
+
+                    System.out.println("co robisz? \n 1:Atakujesz\n 2:Urzywasz mikstury");
+                    int odp =  sc.nextInt();
+                    System.out.println("\n");
+
+                    if(odp == 1){
+                        System.out.println("jak atakujesz? \n 1:Podstawowy atak\n 2:Super atak");
+                        int typAtaku = sc.nextInt();
+
+                        //twój atak
+                        if(typAtaku == 1){
+                            postac.podstawowyAtak(przeciwnik, postac);
+                        }
+                        else if(typAtaku == 2){
+                            postac.superAtakM(przeciwnik, (Mag) postac);
+                        }
+                        else{
+                            System.out.println("niepoprawna odpowiedz");
+                        }
+
+                        //Atak przeciwnika
+
+                        if(przeciwnik.getLicznik() == 3){
+                            przeciwnik.superAtak(postac, przeciwnik);
+                        }
+                        else{
+                            przeciwnik.podstawowyAtak(postac, przeciwnik);
+                        }
+
+                    }
+                    else if(odp == 2){
+                        System.out.println("Uleczyłeś się o 30hp");
+                        postac.plusHp(Mikstura.miksturaHP, postac);
+                    }
+                    else{
+                        System.out.println("niepoprawna odpowiedz");
+                    }
+
+                    System.out.println("\n");
                 }
+
             }
             else{
                 //Walczysz z goblinem
                 Goblin przeciwnik = new Goblin();
-                while (przeciwnik.getHp() < 0 || postac.getHp() < 0){
+                System.out.println("Walczysz z Goblinem");
 
+                //Rozpoczęcie walki
+                while (przeciwnik.getHp() > 0 && postac.getHp() > 0){
+
+                    System.out.println("co robisz? \n 1:Atakujesz\n 2:Urzywasz mikstury");
+                    int odp =  sc.nextInt();
+                    System.out.println("\n");
+
+                    if(odp == 1){
+                        System.out.println("jak atakujesz? \n 1:Podstawowy atak\n 2:Super atak");
+                        int typAtaku = sc.nextInt();
+
+                        //twój atak
+                        if(typAtaku == 1){
+                            postac.podstawowyAtak(przeciwnik, postac);
+                        }
+                        else if(typAtaku == 2){
+                            postac.superAtakM(przeciwnik, (Mag) postac);
+                        }
+                        else{
+                            System.out.println("niepoprawna odpowiedz");
+                        }
+
+                        //Atak przeciwnika
+                        przeciwnik.podstawowyAtak(postac, przeciwnik);
+
+                    }
+                    else if(odp == 2){
+                        System.out.println("Uleczyłeś się o 30hp");
+                        postac.plusHp(Mikstura.miksturaHP, postac);
+                    }
+                    else{
+                        System.out.println("niepoprawna odpowiedz");
+                    }
+
+                    System.out.println("\n");
                 }
             }
 
         }
+        else{
+            System.out.println("Wystąpił błąd");
+            System.exit(0);
+        }
+
+        if(postac.getHp() == 0){
+            System.out.println("Przegrałeś!");
+            System.exit(0);
+        }
+
+        chodzenie(postac);
     }
 }
