@@ -1,4 +1,4 @@
-public class Mag extends Postac implements Mikstura{
+public class Mag extends Postac{
     private int mana = 100;
 
 
@@ -33,13 +33,6 @@ public class Mag extends Postac implements Mikstura{
         }
     }
 
-    @Override
-    public void plusHp(int mikstura, Postac osoba) {
-        osoba.setHp(osoba.getHp() + mikstura);
-    }
 
-    @Override
-    public void plusMany(int mikstura, Mag osoba) {
-        osoba.setMana(osoba.getMana() + mikstura);
-    }
+
 }
