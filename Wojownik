@@ -1,4 +1,4 @@
-public class Wojownik extends Postac implements Mikstura{
+public class Wojownik extends Postac{
     private int hp = 120;
     private int obrona = 10;
     private int wkurzenie = 0;
@@ -51,8 +51,7 @@ public class Wojownik extends Postac implements Mikstura{
         }
     }
 
-    @Override
-    public void podstawowyAtak(Postac odbiorca, Postac atakujacy){
+    public void podstawowyAtak(Postac odbiorca, Wojownik atakujacy){
         int hp;
 
         System.out.println(atakujacy.getName() + " atakuje za " + atakujacy.getObrazenia());
@@ -63,17 +62,7 @@ public class Wojownik extends Postac implements Mikstura{
         System.out.println(odbiorca.getName() + " oberwał, ma teraz " + odbiorca.getHp());
         System.out.println("\n");
 
-        wkurzenie += 2;
+        atakujacy.setWkurzenie(atakujacy.getWkurzenie() + 2);
     }
 
-    @Override
-    public void plusHp(int mikstura, Postac osoba) {
-        osoba.setHp(osoba.getHp() + mikstura);
-
-    }
-
-    @Override
-    public void plusMany(int mikstura, Mag osoba) {
-        System.out.println("Nie masz many, ponieważ jesteś wojownikiem :)");
-    }
 }
